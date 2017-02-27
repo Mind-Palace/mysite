@@ -5,6 +5,9 @@ from django.views.generic import ListView, DetailView
 
 from polls.models import Question, Choice
 
+import logging
+logger = logging.getLogger(__name__)
+
 
 # Create your views here.
 class IndexView(ListView):
@@ -27,6 +30,7 @@ class ResultsView(DetailView):
 
 
 def vote(request, question_id):
+    logger.debug("vote().question_id: %s" % question_id)
     p = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = p.choice_set.get(pk=request.POST['choice'])
