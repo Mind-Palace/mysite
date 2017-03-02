@@ -15,11 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+
 from mysite import views
+from bookmark.views import BookmarkLV, BookmarkDV
+
 
 urlpatterns = [
     url(r'^$', views.HomeView.as_view(), name='home'),
     url(r'^books/', include('books.urls', namespace='books')),
     url(r'^polls/', include('polls.urls', namespace='polls')),
+    url(r'^bookmark/$', BookmarkLV.as_view(), name='index'),
+    url(r'^bookmark/(?P<pk>\d+)/$$', BookmarkDV.as_view(), name='detail'),
     url(r'^admin/', admin.site.urls),
 ]
