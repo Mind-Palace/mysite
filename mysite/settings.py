@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'polls',
     'books',
     'bookmark.apps.BookmarkConfig',
+    'blog.apps.BlogConfig',
 ]
 
 MIDDLEWARE = [
